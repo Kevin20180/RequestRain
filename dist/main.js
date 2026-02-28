@@ -1,10 +1,10 @@
-import { options } from "./cli.js";
 import path from "path";
-import { MessageChannel } from "worker_threads";
+import { fileURLToPath } from "url";
+import { options } from "./cli.js";
 import { Piscina } from "piscina";
 const { serverURL, threads, reqDelay } = options;
 const pool = new Piscina({
-    filename: path.resolve(process.argv[1], "../worker.js"),
+    filename: path.resolve(fileURLToPath(import.meta.url), "../worker.js"),
     minThreads: threads, maxThreads: threads
 });
 const messageChannel = new MessageChannel();

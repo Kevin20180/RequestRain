@@ -1,13 +1,13 @@
+import path from "path";
+import { fileURLToPath } from "url";
 import { options } from "./cli.js";
 import type { PingOptions, PingResultData } from "./worker.js";
-import path from "path";
-import { MessageChannel } from "worker_threads";
 import { Piscina } from "piscina";
 
 const { serverURL, threads, reqDelay } = options;
 
 const pool = new Piscina<PingOptions, PingResultData>({
-    filename: path.resolve(process.argv[1]!, "../worker.js"),
+    filename: path.resolve(fileURLToPath(import.meta.url), "../worker.js"),
     minThreads: threads, maxThreads: threads
 })
 

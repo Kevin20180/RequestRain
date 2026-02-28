@@ -1,4 +1,4 @@
-import { options } from "./index.js";
+import { options } from "./cli.js";
 import type { PingOptions, PingResultData } from "./worker.js";
 import path from "path";
 import { MessageChannel } from "worker_threads";

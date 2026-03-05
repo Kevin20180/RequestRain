@@ -15,7 +15,8 @@
     "request",
     "server",
     "http",
-    "ping"
+    "ping",
+    "threads"
   ],
   "bin": {
     "reqrain": "bin/reqrain"

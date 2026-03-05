@@ -14,7 +14,7 @@ const programName = process.argv[1] ? path.basename(process.argv[1]) : "reqrain"
 program
     .name(programName)
     .version("0.1.0")
-    .description("Envia muitos pings à um servidor HTTP.")
+    .description("Envia múltiplas requisições a um servidor HTTP.")
 
 program
     .argument("<server-url>", "URL do servidor HTTP.")

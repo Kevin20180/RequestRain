@@ -18,3 +18,8 @@ Options:
                      Default: 20
   -h, --help         display help for command
 ```
+
+## Example:
+```
+reqrain http://localhost:8080 --threads 3
+```

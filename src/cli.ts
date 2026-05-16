@@ -20,12 +20,12 @@ program
     .argument("<server-url>", "HTTP server URL.")
     .option("--threads <quant>", "Number of threads to be used. Default: " + options.threads)
     .option("--req-delay <ms>", "Delay in milliseconds for each request per thread. Default: " + options.reqDelay)
-    .action(function(serverURL) {
+    .action(async function(serverURL) {
         try {
-            new URL(serverURL)
+            new URL(serverURL);
         }
         catch {
-            this.error("Invalid URL: " + serverURL);
+            return this.error("Invalid URL: " + serverURL);
         }
         
         options.serverURL = serverURL;
@@ -34,14 +34,14 @@ program
         
         if(opts.threads) {
             const threads = Number(opts.threads);
-            if(Number.isNaN(threads) || threads < 1) this.error("Invalid number of threads: " + opts.threads);
+            if(Number.isNaN(threads) || threads < 1) return this.error("Invalid number of threads: " + opts.threads);
             
             options.threads = threads;
         }
         
         if(opts.reqDelay) {
             const delay = Number(opts.reqDelay);
-            if(Number.isNaN(delay) || delay < 1) this.error("Invalid delay: " + opts.reqDelay);
+            if(Number.isNaN(delay) || delay < 1) return this.error("Invalid delay: " + opts.reqDelay);
             
             options.reqDelay = delay;
         }

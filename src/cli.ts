@@ -13,7 +13,7 @@ const programName = process.argv[1] ? path.basename(process.argv[1]) : "reqrain"
 
 program
     .name(programName)
-    .version("0.1.0")
+    .version("0.2.0-alpha")
     .description("Sends multiple requests to an HTTP server.")
 
 program

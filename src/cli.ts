@@ -28,6 +28,13 @@ program
             return this.error("Invalid URL: " + serverURL);
         }
         
+        try {
+            await fetch(serverURL);
+        } catch(e) {
+            console.error(e);
+            return this.error("Unable to access the server " + serverURL);
+        }
+        
         options.serverURL = serverURL;
         
         const opts = this.opts();
@@ -45,8 +52,8 @@ program
             
             options.reqDelay = delay;
         }
+        
+        import("./main.js");
     })
 
 program.parse();
-
-import("./main.js");

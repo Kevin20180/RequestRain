@@ -21,6 +21,9 @@
   "bin": {
     "reqrain": "bin/cli.js"
   },
+  "engines": {
+    "node": ">=20.20.0"
+  },
   "devDependencies": {
     "@types/node": "^25.3.2",
     "typescript": "^5.9.3"

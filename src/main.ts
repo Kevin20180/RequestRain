@@ -31,7 +31,7 @@ pool.on("message", (data) => {
 setInterval(() => {
     if(requests === lastRequests) return;
     
-    process.stdout.write(`\x1b[0G\x1b[2K${requests} requesições. ${errorCount} erros.`);
+    process.stdout.write(`\x1b[0G\x1b[2K${requests} requests. ${errorCount} errors.`);
     lastRequests = requests;
 }, 50)
 

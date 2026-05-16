@@ -14,18 +14,18 @@ const programName = process.argv[1] ? path.basename(process.argv[1]) : "reqrain"
 program
     .name(programName)
     .version("0.1.0")
-    .description("Envia múltiplas requisições a um servidor HTTP.")
+    .description("Sends multiple requests to an HTTP server.")
 
 program
-    .argument("<server-url>", "URL do servidor HTTP.")
-    .option("--threads <quant>", "Quantidade de threads a serem usados. Padrão: " + options.threads)
-    .option("--req-delay <ms>", "Delay em milisegundos para cada requisição. Padrão: " + options.reqDelay)
+    .argument("<server-url>", "HTTP server URL.")
+    .option("--threads <quant>", "Number of threads to be used. Default: " + options.threads)
+    .option("--req-delay <ms>", "Delay in milliseconds for each request per thread. Default: " + options.reqDelay)
     .action(function(serverURL) {
         try {
             new URL(serverURL)
         }
         catch {
-            this.error("URL inválida: " + serverURL);
+            this.error("Invalid URL: " + serverURL);
         }
         
         options.serverURL = serverURL;
@@ -34,14 +34,14 @@ program
         
         if(opts.threads) {
             const threads = Number(opts.threads);
-            if(Number.isNaN(threads) || threads < 1) this.error("Quantidade de threads inválida: " + opts.threads);
+            if(Number.isNaN(threads) || threads < 1) this.error("Invalid number of threads: " + opts.threads);
             
             options.threads = threads;
         }
         
         if(opts.reqDelay) {
             const delay = Number(opts.reqDelay);
-            if(Number.isNaN(delay) || delay < 1) this.error("Delay inválido: " + opts.reqDelay);
+            if(Number.isNaN(delay) || delay < 1) this.error("Invalid delay: " + opts.reqDelay);
             
             options.reqDelay = delay;
         }

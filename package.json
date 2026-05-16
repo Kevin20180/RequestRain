@@ -19,7 +19,7 @@
     "threads"
   ],
   "bin": {
-    "reqrain": "bin/reqrain"
+    "reqrain": "bin/cli.js"
   },
   "devDependencies": {
     "@types/node": "^25.3.2",

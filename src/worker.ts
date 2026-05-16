@@ -14,6 +14,8 @@ export interface PingResultData {
 export default function startPings({ serverURL, reqDelay }: PingOptions) {
     let requests = 0;
     let errors = 0;
+    let postMessageInterval = Math.max(1, 19 - Math.round((reqDelay - 1) * 9 / 48) * 2);
+    fs.writeSync(2, "interval: " + postMessageInterval + "\n");
     
     setInterval(() => {
         fetch(serverURL)
@@ -23,7 +25,7 @@ export default function startPings({ serverURL, reqDelay }: PingOptions) {
         
         requests++;
         
-        if(requests % 19 === 0) {
+        if(requests % postMessageInterval === 0) {
             parentPort?.postMessage({
                 quantity: requests,
                 errors: errors > 0 ? errors : undefined
